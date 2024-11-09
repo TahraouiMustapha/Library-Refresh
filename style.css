@@ -2,10 +2,57 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: system-ui, Roboto, sans-serif;
 }
 
 @font-face {
     font-family: 'my-font-family';
     src: url(/assets/Norse-Bold.otf);
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #95a5a6;
+    color: #fff;
+    height: 96px;
+    padding: 6px 56px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.header > * {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.logo > .icon {
+    width: 56px;
+}
+
+.logo > .txt {
+    font-family: 'my-font-family';
+    font-size: 40px;
+    color: #fff;
+}
+
+.icon > img {
+    width: 100%;
+}
+
+.left svg {
+    width: 40px;
+    height: 40px;
+    fill: #fff;
+}
+
+.left > .txt {
+    font-size: 1.3em;
+}
+
 
