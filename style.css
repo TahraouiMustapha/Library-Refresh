@@ -13,6 +13,7 @@
 body {
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 .header {
@@ -53,6 +54,67 @@ body {
 
 .left > .txt {
     font-size: 1.3em;
+}
+
+.main {
+    flex: 1;
+    width: 80%;
+    margin: auto;
+    padding-top: 48px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+}
+
+#new-book-btn {
+    padding: 16px 48px;
+    border: none;
+    font-size: 1.1em;
+    border-radius: 16px;
+
+    background-color: #95a5a6;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#new-book-btn:hover {
+    background-color: #2c3e50;
+}
+
+.books-container {
+    width: 100%;
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 225px);
+    gap: 24px;
+}
+
+.card {
+    border-radius: 16px;
+    padding: 16px 24px;
+    box-shadow: 7px 14px 32px -9px rgba(0,0,0,0.75);
+    max-height: 250px;
+}
+
+.card > p + p {
+    margin-top: 12px;
+}
+
+.card p:nth-child(1) {
+    background-color: #95a5a6;
+    width: 100%;
+    padding: 4px 8px;
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.card > * {
+    font-size: 1.1em;
 }
 
 
