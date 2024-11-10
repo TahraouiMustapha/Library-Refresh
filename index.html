@@ -29,7 +29,7 @@
         <button id="new-book-btn"> New Book </button>
         <div class="books-container">
             <div class="card">
-                <p class="book-title">moha</p>
+                <p class="book-title">Default book</p>
                 <p class="book-author">Author : jamal</p>
                 <p class="book-numberPages">Pages : 243</p>
                 <p class="book-haveRead">Status : have Read</p>
@@ -39,6 +39,50 @@
         </div>
     </div>
 
+    <dialog >
+        <form action="" method="dialog">
+            <p>
+                <label for="book-title">Book title</label>
+                <input type="text" 
+                       id="book-title" 
+                       name = "book_title" autofocus >
+            </p>
+            <p>
+                <label for="book-author">Book author</label>
+                <input type="text"
+                       id="book-author" 
+                       name="book_author">
+            </p>
+            <p>
+                <label for ="book-numberPages">Number of pages</label>
+                <input type ="number"
+                       id ="book-numberPages"
+                       name ="book_numberPages">
+            </p>
 
+            <fieldset>
+                <legend>Have you read this book?</legend>
+                <p>
+                    <input type="radio"
+                           id="have-read"
+                           name="book_haveRead"
+                           value="yes">
+                    <label for="have-read">have read</label>       
+                </p>
+                <p>
+                    <input type="radio"
+                           id="have-not-read"
+                           name="book_haveRead"
+                           value="no">
+                    <label for="have-not-read">have not read</label>
+                </p>
+            </fieldset>
+
+            <div class="form-buttons">
+                <button> Add New Book </button>
+                <button type="button" >Cancel</button>
+            </div>
+        </form>
+    </dialog>
 </body>
 </html>

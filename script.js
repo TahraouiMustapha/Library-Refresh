@@ -1,5 +1,10 @@
 const myLibrary = [];
 
+const newBookBtn = document.querySelector('#new-book-btn');
+
+newBookBtn.addEventListener("click", () =>
+    document.querySelector('dialog').showModal()
+)
 
 
 showBooks();
