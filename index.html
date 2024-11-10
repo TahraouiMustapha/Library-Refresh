@@ -39,19 +39,20 @@
         </div>
     </div>
 
-    <dialog >
+    <dialog open>
         <form action="" method="dialog">
             <p>
                 <label for="book-title">Book title</label>
                 <input type="text" 
                        id="book-title" 
-                       name = "book_title" autofocus >
+                       name = "book_title" 
+                       required autofocus >
             </p>
             <p>
                 <label for="book-author">Book author</label>
                 <input type="text"
                        id="book-author" 
-                       name="book_author">
+                       name="book_author" required>
             </p>
             <p>
                 <label for ="book-numberPages">Number of pages</label>
@@ -73,14 +74,14 @@
                     <input type="radio"
                            id="have-not-read"
                            name="book_haveRead"
-                           value="no">
+                           value="no" checked>
                     <label for="have-not-read">have not read</label>
                 </p>
             </fieldset>
 
             <div class="form-buttons">
                 <button> Add New Book </button>
-                <button type="button" >Cancel</button>
+                <button type="button" id="closeBtn">Cancel</button>
             </div>
         </form>
     </dialog>
