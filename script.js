@@ -1,15 +1,36 @@
-const myLibrary = [];
+const myLibrary = [
+    new Book('defautl', 'author1', 345, false)
+];
 
 const newBookBtn = document.querySelector('#new-book-btn');
 const myDialog = document.querySelector('dialog');
 
 showBooks();
 
-
+//for new book btn in main
 newBookBtn.addEventListener("click", () =>
     myDialog.showModal()
 );
 
+//for adding a new book btn in the dialog
+const addNewBookBtn = document.querySelector('#add-new-book');
+addNewBookBtn.addEventListener('click', () => {
+    const titleInput = document.querySelector('input[name="book_title"]');
+    const authorInput = document.querySelector('input[name="book_author"]');
+    const numberPagesInput = document.querySelector('input[name="book_numberPages"]');
+    //get the radio elements
+    const haveReadRadios = document.querySelectorAll('input[name="book_haveRead"]');
+
+    if(titleInput.value != '' && authorInput.value!='') {
+        addBookToLibrary(
+            titleInput.value, 
+            authorInput.value, 
+            numberPagesInput.value,
+            haveReadRadios[0].checked === true ? true : false
+        )
+        showBooks();
+    } 
+});
 const closeDialogBtn = document.querySelector('#closeBtn');
 closeDialogBtn.addEventListener("click", () => 
     myDialog.close()
@@ -35,6 +56,7 @@ function addBookToLibrary( title, author, numberPages, haveRead ) {
 // displays books
 function showBooks() {
     const booksContainer = document.querySelector('.books-container');
+    booksContainer.innerHTML = '';
     myLibrary.forEach( book => {
         booksContainer.appendChild(
             createBookCard(book)
@@ -59,7 +81,7 @@ function createBookCard( book ) {
         cardDiv.appendChild( numberPagesElement );
 
         const haveReadElement = createParagraphElement( 'haveRead' );
-        haveReadElement.textContent = `Status :${book.haveRead}` ;
+        haveReadElement.textContent = `Status : ${book.haveRead}` ;
         cardDiv.appendChild( haveReadElement );
 
 
