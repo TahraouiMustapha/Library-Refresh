@@ -97,10 +97,11 @@ body {
     border-radius: 16px;
     padding: 16px 24px;
     box-shadow: 7px 14px 32px -9px rgba(0,0,0,0.75);
-    max-height: 250px;
+    max-height: 280px;
 }
 
-.card > p + p {
+.card > p + p ,
+.card-btns {
     margin-top: 12px;
 }
 
@@ -115,6 +116,26 @@ body {
 
 .card > * {
     font-size: 1.1em;
+}
+
+.card-btns {
+        display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-btns > button {
+    width: 140px;
+    font-size: 1em;
+    font-weight: 500;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #95a5a6;
+    color: #fff;
+    cursor: pointer;
 }
 
 /* for dialog */

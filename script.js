@@ -56,7 +56,7 @@ function addBookToLibrary( title, author, numberPages, haveRead ) {
 // displays books
 function showBooks() {
     const booksContainer = document.querySelector('.books-container');
-    booksContainer.innerHTML = '';
+    // booksContainer.innerHTML = '';
     myLibrary.forEach( book => {
         booksContainer.appendChild(
             createBookCard(book)
@@ -81,7 +81,8 @@ function createBookCard( book ) {
         cardDiv.appendChild( numberPagesElement );
 
         const haveReadElement = createParagraphElement( 'haveRead' );
-        haveReadElement.textContent = `Status : ${book.haveRead}` ;
+        let doYouHaveReadAnswer = book.haveRead === true ? 'have read' : 'not yet';
+        haveReadElement.textContent = `Status : ${doYouHaveReadAnswer}` ;
         cardDiv.appendChild( haveReadElement );
 
 
