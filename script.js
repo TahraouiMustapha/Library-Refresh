@@ -1,9 +1,5 @@
 const myLibrary = [
     new Book('defautl', 'author1', 345, false),
-    new Book('defautl', 'author2', 345, true),
-    new Book('defautl', 'author3', 345, true),
-    new Book('defautl', 'author4', 345, false),
-    
 ];
 
 const newBookBtn = document.querySelector('#new-book-btn');
@@ -50,6 +46,10 @@ function Book(title, author, numberPages, haveRead) {
         return `${title} by ${author} , ${numberPages}, ${result}`;
     }    
 }
+//function to toggle read status
+Book.prototype.toggleReadStatus = function () {
+    this.haveRead = this.haveRead === true ? false : true;
+}
 
 function addBookToLibrary( title, author, numberPages, haveRead ) {
     let newBook = new Book( title, author, numberPages, haveRead );
@@ -61,6 +61,14 @@ function removeBook(index) {
     myLibrary.splice(index, 1);
     showBooks();
 }
+
+function changeReadStatus(index) {
+    const myObj = myLibrary[index];
+    //toggle read status
+    myObj.toggleReadStatus();
+    showBooks();                          
+}
+
 // displays books
 function showBooks() {
     const booksContainer = document.querySelector('.books-container');
@@ -108,7 +116,11 @@ function createBookCard( book, dataIndex ) {
             const changeReadBtn = document.createElement('button');
             changeReadBtn.setAttribute('id', 'change-read-status-btn');           
             changeReadBtn.textContent = 'change read';     
-            
+            //to add data index attribute
+            changeReadBtn.dataset.index = dataIndex;
+            changeReadBtn.addEventListener('click', e => 
+                changeReadStatus(e.target.dataset.index)
+            )
             cardBtnsDiv.appendChild(removeBtn);
             cardBtnsDiv.appendChild(changeReadBtn);
         cardDiv.appendChild(cardBtnsDiv);    
