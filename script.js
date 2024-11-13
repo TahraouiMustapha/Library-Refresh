@@ -57,10 +57,14 @@ function addBookToLibrary( title, author, numberPages, haveRead ) {
     myLibrary.push(newBook);
 }
 
+function removeBook(index) {
+    myLibrary.splice(index, 1);
+    showBooks();
+}
 // displays books
 function showBooks() {
     const booksContainer = document.querySelector('.books-container');
-    // booksContainer.innerHTML = '';
+    booksContainer.innerHTML = '';
     let dataIndex = 0;
     myLibrary.forEach( book => {
         booksContainer.appendChild(
@@ -98,6 +102,9 @@ function createBookCard( book, dataIndex ) {
             removeBtn.textContent = ' remove ';
             //to add data index attribute
             removeBtn.dataset.index = dataIndex;
+            removeBtn.addEventListener('click', e  =>
+                removeBook(e.target.dataset.index)
+            )
             const changeReadBtn = document.createElement('button');
             changeReadBtn.setAttribute('id', 'change-read-status-btn');           
             changeReadBtn.textContent = 'change read';     
