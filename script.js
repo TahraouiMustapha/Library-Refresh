@@ -1,5 +1,9 @@
 const myLibrary = [
-    new Book('defautl', 'author1', 345, false)
+    new Book('defautl', 'author1', 345, false),
+    new Book('defautl', 'author2', 345, true),
+    new Book('defautl', 'author3', 345, true),
+    new Book('defautl', 'author4', 345, false),
+    
 ];
 
 const newBookBtn = document.querySelector('#new-book-btn');
@@ -57,14 +61,16 @@ function addBookToLibrary( title, author, numberPages, haveRead ) {
 function showBooks() {
     const booksContainer = document.querySelector('.books-container');
     // booksContainer.innerHTML = '';
+    let dataIndex = 0;
     myLibrary.forEach( book => {
         booksContainer.appendChild(
-            createBookCard(book)
+            createBookCard(book, dataIndex)
         );
+        dataIndex++;
     })
 }
 
-function createBookCard( book ) {
+function createBookCard( book, dataIndex ) {
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card'); 
 
@@ -84,6 +90,21 @@ function createBookCard( book ) {
         let doYouHaveReadAnswer = book.haveRead === true ? 'have read' : 'not yet';
         haveReadElement.textContent = `Status : ${doYouHaveReadAnswer}` ;
         cardDiv.appendChild( haveReadElement );
+
+        const cardBtnsDiv = document.createElement('div');
+        cardBtnsDiv.classList.add('card-btns');
+            const removeBtn = document.createElement('button');
+            removeBtn.setAttribute('id', 'remove-btn');
+            removeBtn.textContent = ' remove ';
+            //to add data index attribute
+            removeBtn.dataset.index = dataIndex;
+            const changeReadBtn = document.createElement('button');
+            changeReadBtn.setAttribute('id', 'change-read-status-btn');           
+            changeReadBtn.textContent = 'change read';     
+            
+            cardBtnsDiv.appendChild(removeBtn);
+            cardBtnsDiv.appendChild(changeReadBtn);
+        cardDiv.appendChild(cardBtnsDiv);    
 
 
     return cardDiv;
