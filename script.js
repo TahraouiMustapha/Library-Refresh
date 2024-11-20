@@ -1,3 +1,21 @@
+class Book {
+    constructor(title, author, numberPages, haveRead) {
+        this.title = title;
+        this.author = author;
+        this.numberPages = numberPages;
+        this.haveRead = haveRead;
+    }
+
+    info() {
+        let result = this.haveRead == true ? 'have read':'not read yet';
+        return `${this.title} by ${this.author} , ${this.numberPages}, ${result}`;
+    }
+
+    toggleReadStatus() {
+        this.haveRead = this.haveRead === true ? false : true;
+    }
+}
+
 const myLibrary = [
     new Book('defautl', 'author1', 345, false),
 ];
@@ -35,21 +53,6 @@ const closeDialogBtn = document.querySelector('#closeBtn');
 closeDialogBtn.addEventListener("click", () => 
     myDialog.close()
 )
-
-function Book(title, author, numberPages, haveRead) {
-    this.title = title;
-    this.author = author;
-    this.numberPages = numberPages;
-    this.haveRead = haveRead;
-    this.info = function() {
-        let result = haveRead == true ?'have read':'not read yet';  
-        return `${title} by ${author} , ${numberPages}, ${result}`;
-    }    
-}
-//function to toggle read status
-Book.prototype.toggleReadStatus = function () {
-    this.haveRead = this.haveRead === true ? false : true;
-}
 
 function addBookToLibrary( title, author, numberPages, haveRead ) {
     let newBook = new Book( title, author, numberPages, haveRead );
