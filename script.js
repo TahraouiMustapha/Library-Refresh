@@ -32,14 +32,42 @@ newBookBtn.addEventListener("click", () =>
 
 //for adding a new book btn in the dialog
 const addNewBookBtn = document.querySelector('#add-new-book');
-addNewBookBtn.addEventListener('click', () => {
+addNewBookBtn.addEventListener('click', (event) => {
     const titleInput = document.querySelector('input[name="book_title"]');
     const authorInput = document.querySelector('input[name="book_author"]');
     const numberPagesInput = document.querySelector('input[name="book_numberPages"]');
     //get the radio elements
     const haveReadRadios = document.querySelectorAll('input[name="book_haveRead"]');
+    let valid = true;
 
-    if(titleInput.value != '' && authorInput.value!='') {
+    if(titleInput.validity.valueMissing) {
+        titleInput.setCustomValidity("should fill all the field");
+        titleInput.reportValidity();
+        valid = false;
+    } else {
+        titleInput.setCustomValidity("");
+    }
+    
+
+    if(authorInput.validity.valueMissing) {
+        authorInput.setCustomValidity("should fill all the field");
+        authorInput.reportValidity();
+        valid = false;
+    } else {
+        authorInput.setCustomValidity("");
+    }
+
+    if(numberPagesInput.validity.rangeUnderflow ||
+        numberPagesInput.validity.valueMissing
+    ) {
+        numberPagesInput.setCustomValidity("should enter at least 1 page");
+        numberPagesInput.reportValidity();
+        valid = false;
+    } else {
+        numberPagesInput.setCustomValidity("");
+    }
+
+    if(valid) {
         addBookToLibrary(
             titleInput.value, 
             authorInput.value, 
@@ -47,8 +75,11 @@ addNewBookBtn.addEventListener('click', () => {
             haveReadRadios[0].checked === true ? true : false
         )
         showBooks();
-    } 
+    } else {
+        event.preventDefault();
+    }
 });
+
 const closeDialogBtn = document.querySelector('#closeBtn');
 closeDialogBtn.addEventListener("click", () => 
     myDialog.close()
